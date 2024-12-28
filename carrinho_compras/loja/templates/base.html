@@ -1,0 +1,6 @@
+
+<form method="GET" action="{% url 'pesquisar_produto' %}">
+    {% csrf_token %}
+    <input type="text" name="termo" placeholder="Pesquisar produtos...">
+    <button type="submit">Buscar</button>
+</form>

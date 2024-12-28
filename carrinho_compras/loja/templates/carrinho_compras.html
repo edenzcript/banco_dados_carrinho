@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras</title>
+</head>
+<body>
+    <h1>Seu Carrinho de Compras</h1>
+
+    {% if carrinho %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Preço</th>
+                    <th>Quantidade</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in itens %}
+                    <tr>
+                        <td>{{ item.produto.nome }}</td>
+                        <td>R$ {{ item.produto.preco|floatformat:2 }}</td>
+                        <td>{{ item.quantidade }}</td>
+                        <td>R$ {{ item.total|floatformat:2 }}</td> 
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <p><strong>Total: R$ {{ total|floatformat:2 }}</strong></p>
+
+    {% else %}
+        <p>O carrinho está vazio.</p>
+    {% endif %}
+
+    <br>
+    <a href="/loja/adicionar_ao_carrinho/1/">Adicionar Produto 1 ao Carrinho</a><br>
+    <a href="/loja/adicionar_ao_carrinho/2/">Adicionar Produto 2 ao Carrinho</a><br>
+</body>
+</html>

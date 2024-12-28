@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesquisa de Produtos</title>
+</head>
+<body>
+    <h1>Pesquisar Produtos</h1>
+
+    <!-- Formulário de Pesquisa -->
+    <form method="GET" action="{% url 'pesquisar_produto' %}">
+        {% csrf_token %}
+        {{ form.as_p }}  <!-- Exibe o formulário -->
+        <button type="submit">Pesquisar</button>
+    </form>
+
+    <h2>Resultados da Pesquisa:</h2>
+    <ul>
+        {% for produto in produtos %}
+            <li>{{ produto.nome }} - R$ {{ produto.preco }} - {{ produto.categoria }}</li>
+        {% empty %}
+            <li>Nenhum produto encontrado.</li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
